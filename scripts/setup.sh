@@ -3,6 +3,7 @@ if [ ! -e .env ]; then
     exit 1
 fi
 source .env
+yarn
 if [ ! "$(docker ps -q -f name=$DYNAMO_CONTAINER_NAME)" ]; then
     echo -e "\e[93mSetting up environment\e[0m"
     # run container
