@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  dynamo:
+    container_name: $DYNAMO_CONTAINER_NAME
+    image: dwmkerr/dynamodb
+    command: -dbPath /data
+    volumes:
+      - /data:/data
+    restart: always
+    ports:
+      - 8000:8000

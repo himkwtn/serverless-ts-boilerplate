@@ -1,0 +1,6 @@
+getCat:
+  handler: animals/animals.handler.getCat
+  events:
+    - http:
+        method: get
+        path: animals/getCat
