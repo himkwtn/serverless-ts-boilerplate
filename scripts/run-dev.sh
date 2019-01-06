@@ -5,6 +5,6 @@ if [ -e .env ]; then
     fi
     yarn start --port $PORT
 else
-    echo -e '\e[91mPlease setup .env file'
+    echo -e '\033[91mPlease setup .env file'
     exit 1
 fi
