@@ -18,4 +18,4 @@ functions:
         - http:
             method: get
             path: hello
-  - ${file(./animals/animals.functions.yml)}
+  - ${file(./src/animals/animals.functions.yml)}

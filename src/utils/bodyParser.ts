@@ -1,5 +1,5 @@
 import * as queryString from 'query-string'
-import { Event } from './interfaces'
+import { Event } from '../types'
 import { APIGatewayProxyEvent } from 'aws-lambda'
 import { error } from '.'
 
@@ -12,13 +12,13 @@ export const parseBody = (event: Event | APIGatewayProxyEvent) => {
       case 'application/json':
         return parseJSON(body)
       default:
-        throw error(400, JSON.stringify({ error: 'Unsupported Content Type' }))
+        throw error(400, { error: 'Unsupported Content Type' })
     }
   }
-  throw error(400, JSON.stringify({ error: 'Body is empty.' }))
+  throw error(400, { error: 'Body is empty.' })
 }
 
-const parse = (body: string, parser: (body: string) => any) => {
+const parse = (body: string, parser: (body: string) => Object) => {
   try {
     return parser(body)
   } catch (err) {

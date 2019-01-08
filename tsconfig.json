@@ -2,12 +2,10 @@
   "compilerOptions": {
     "sourceMap": true,
     "target": "es6",
-    "lib": [
-      "esnext"
-    ],
-    "moduleResolution": "node"
+    "lib": ["esnext"],
+    "moduleResolution": "node",
+    "strictPropertyInitialization": false /* Enable strict checking of property initialization in classes. */,
+    "experimentalDecorators": true /* Enables experimental support for ES7 decorators. */
   },
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

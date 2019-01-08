@@ -1,5 +1,5 @@
 import { IMiddyMiddlewareObject, IHandlerLambda } from 'middy'
-import { Event } from '../utils/interfaces'
+import { Event } from '../types'
 import { parseBody } from '../utils'
 
 export const bodyParser = (): IMiddyMiddlewareObject => ({

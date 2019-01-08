@@ -1,8 +1,8 @@
-import { CatModel, CatDataSchema } from '../models/cat.model'
+import { CatModel, CatDataSchema, CatValidator } from '../models/cat.model'
 import { payload, error } from '../utils'
 import * as middy from 'middy'
-import { Event, Context } from '../utils/interfaces'
-import { bodyParser, httpErrorHandler } from '../middlewares'
+import { Event, Context } from '../types'
+import { bodyParser, httpErrorHandler, validator } from '../middlewares'
 
 export const getCat = middy(async (event: Event, context: Context) => {
   const input = event.queryStringParameters as any
@@ -19,4 +19,12 @@ export const createCat = middy(async (event: Event, context: Context) => {
   return payload(200, { message: result })
 })
   .use(bodyParser())
+  .use(httpErrorHandler())
+
+export const fakeCat = middy(async (event: Event, context: Context) => {
+  const cat = event.data as CatDataSchema
+  return payload(200, { message: cat })
+})
+  .use(bodyParser())
+  .use(validator(CatValidator))
   .use(httpErrorHandler())

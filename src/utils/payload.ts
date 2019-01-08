@@ -1,5 +1,5 @@
 import { APIGatewayProxyResult } from 'aws-lambda'
-import * as _ from 'lodash'
+import { is } from 'ramda'
 import * as createError from 'http-errors'
 
 export const payload = (
@@ -8,11 +8,14 @@ export const payload = (
 ): APIGatewayProxyResult => {
   return {
     statusCode,
-    body: _.isObject(body) ? JSON.stringify(body) : (body as string)
+    body: stringify(body)
   }
 }
 
 export const error = (
   statusCode: number,
   body: { [key: string]: any } | string
-) => createError(statusCode, _.isObject(body) ? JSON.stringify(body) : body)
+) => createError(statusCode, stringify(body))
+
+const stringify = (body: { [key: string]: any } | string) =>
+  is(Object, body) ? JSON.stringify(body) : (body as string)

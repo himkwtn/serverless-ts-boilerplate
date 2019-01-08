@@ -1,0 +1,20 @@
+getCat:
+  handler: src/animals/animalsHandler.getCat
+  events:
+    - http:
+        method: get
+        path: animals/getCat
+
+createCat:
+  handler: src/animals/animalsHandler.createCat
+  events:
+    - http:
+        method: post
+        path: animals/createCat
+
+fakeCat:
+  handler: src/animals/animalsHandler.fakeCat
+  events:
+    - http:
+        method: post
+        path: animals/fakeCat
