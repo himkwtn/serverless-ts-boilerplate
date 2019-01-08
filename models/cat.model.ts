@@ -2,17 +2,18 @@ import dynamoose from '../config/db'
 const { Schema } = dynamoose
 const CatSchema = new Schema({
   name: {
-    type: String
+    type: String,
+    hashKey: true
   },
   breed: {
     type: String
   }
 })
-interface CatDataSchema {
+export interface CatDataSchema {
   name: string
   breed: string
 }
-interface CatKeySchema {
+export interface CatKeySchema {
   name: string
 }
 export const CatModel = dynamoose.model<CatDataSchema, CatKeySchema>(
