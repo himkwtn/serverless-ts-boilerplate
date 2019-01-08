@@ -1,7 +1,7 @@
 {
   "name": "aws-lambda-ts",
   "version": "1.0.0",
-  "description": "Serverless webpack example using Typescript",
+  "description": "Serverless Boilerplate using Typescript",
   "main": "handler.js",
   "scripts": {
     "start": "sls offline start",
@@ -36,6 +36,6 @@
     "typescript": "^2.9.2",
     "webpack": "^4.5.0"
   },
-  "author": "The serverless webpack authors (https://github.com/elastic-coders/serverless-webpack)",
+  "author": "https://github.com/himkwtn",
   "license": "MIT"
 }
