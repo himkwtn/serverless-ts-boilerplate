@@ -5,6 +5,13 @@ getCat:
         method: get
         path: animals/getCat
 
+getManyCats:
+  handler: src/animals/animalsHandler.getManyCats
+  events:
+    - http:
+        method: get
+        path: animals/getManyCats
+
 createCat:
   handler: src/animals/animalsHandler.createCat
   events:
