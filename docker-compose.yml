@@ -6,7 +6,7 @@ services:
     image: dwmkerr/dynamodb
     command: -dbPath /data
     volumes:
-      - /data:/data
+      - ./data:/data
     restart: always
     ports:
       - 8000:8000
