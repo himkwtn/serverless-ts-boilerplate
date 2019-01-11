@@ -1,12 +1,13 @@
-import { ObjectSchema } from 'yup'
+import { ObjectSchema, ValidateOptions } from 'yup'
 import { pick } from 'ramda'
 import { error } from './payload'
-export const validateSchema = <T extends Object>(
+export const validateSchema = <T extends object>(
   schema: ObjectSchema<T>,
-  object: object
+  object: object,
+  options?: ValidateOptions
 ) => {
   return schema
-    .validate(object, { abortEarly: false, stripUnknown: true })
+    .validate(object, { abortEarly: false, stripUnknown: true, ...options })
     .catch(catchError)
 }
 

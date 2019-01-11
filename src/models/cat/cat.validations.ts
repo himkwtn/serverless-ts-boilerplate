@@ -1,5 +1,6 @@
 import { object, string } from 'yup'
-import { CatDataSchema, CatKeySchema } from './cat.model'
+import { CatDataSchema } from './cat.model'
+import { queryString } from '../../utils'
 
 export const createCatSchema = object().shape<CatDataSchema>({
   name: string()
@@ -11,14 +12,15 @@ export const createCatSchema = object().shape<CatDataSchema>({
 })
 
 export const findCatSchema = object()
-  .shape<CatDataSchema>({
-    name: string().trim(),
-    breed: string().trim()
+  .shape({
+    name: queryString,
+    breed: queryString
   })
   .nullable(true)
 
-export const findUniqueCatSchema = object().shape<CatKeySchema>({
+export const updateCatSchema = object().shape<CatDataSchema>({
   name: string()
     .trim()
-    .required()
+    .required(),
+  breed: string().trim()
 })

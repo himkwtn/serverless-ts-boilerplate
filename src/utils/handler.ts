@@ -12,13 +12,9 @@ export const handler = (
       undefined
     )) as APIGatewayProxyResult
   } catch (err) {
-    const error = {
-      statusCode: 500,
+    return {
+      statusCode: err.statusCode || 500,
       body: JSON.stringify({ error: err.message })
     }
-    if (err instanceof createError.HttpError) {
-      error.statusCode = err.statusCode
-    }
-    return error
   }
 }

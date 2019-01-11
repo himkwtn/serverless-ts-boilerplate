@@ -3,25 +3,32 @@ getCat:
   events:
     - http:
         method: get
-        path: animals/getCat
+        path: animals/cat/{name}
 
 getManyCats:
   handler: src/animals/animalsHandler.getManyCats
   events:
     - http:
         method: get
-        path: animals/getManyCats
+        path: animals/cat
 
 createCat:
   handler: src/animals/animalsHandler.createCat
   events:
     - http:
         method: post
-        path: animals/createCat
+        path: animals/cat
 
-fakeCat:
-  handler: src/animals/animalsHandler.fakeCat
+updateCat:
+  handler: src/animals/animalsHandler.updateCat
   events:
     - http:
-        method: post
-        path: animals/fakeCat
+        method: put
+        path: animals/cat
+
+deleteCat:
+  handler: src/animals/animalsHandler.deleteCat
+  events:
+    - http:
+        method: delete
+        path: animals/cat/{name}

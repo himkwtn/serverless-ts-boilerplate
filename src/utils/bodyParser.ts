@@ -18,7 +18,7 @@ export const parseBody = (event: Event | APIGatewayProxyEvent) => {
   throw error(400, { error: 'Body is empty.' })
 }
 
-const parse = (body: string, parser: (body: string) => Object) => {
+const parse = (body: string, parser: (body: string) => object) => {
   try {
     return parser(body)
   } catch (err) {

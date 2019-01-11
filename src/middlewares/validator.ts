@@ -1,24 +1,27 @@
 import { IMiddyMiddlewareObject, IHandlerLambda } from 'middy'
 import { Event } from '../types'
 import { validateSchema } from '../utils'
-import { ObjectSchema } from 'yup'
+import { ObjectSchema, ValidateOptions } from 'yup'
 
-const dataPath = ({ event: { httpMethod } }: IHandlerLambda<Event>): string => {
-  const requestType = {
-    GET: 'queryStringParameters',
-    POST: 'data'
-  }
-  return requestType[httpMethod]
+const dataPath = {
+  QUERY: 'queryStringParameters',
+  BODY: 'data'
 }
 
-export const validator = <T extends Object>(
-  schema: ObjectSchema<T>
+const validator = (path: string) => <T extends object>(
+  schema: ObjectSchema<T>,
+  options?: ValidateOptions
 ): IMiddyMiddlewareObject => ({
   before: async (handler: IHandlerLambda<Event>, next) => {
-    handler.event[dataPath(handler)] = await validateSchema(
+    handler.event[path] = await validateSchema(
       schema,
-      handler.event[dataPath(handler)]
+      handler.event[path],
+      options
     )
     next()
   }
 })
+
+export const queryValidator = validator(dataPath.QUERY)
+
+export const bodyValidator = validator(dataPath.BODY)
