@@ -30,6 +30,7 @@
     "@types/ramda": "^0.25.46",
     "@types/yup": "^0.26.4",
     "serverless": "^1.35.1",
+    "serverless-dotenv-plugin": "^2.0.1",
     "serverless-webpack": "^5.1.1",
     "source-map-support": "^0.5.6",
     "ts-loader": "^4.2.0",
